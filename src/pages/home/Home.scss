@@ -157,12 +157,40 @@
   }
 
   .haeder {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
-    grid-gap: 20px;
+    
 
-    align-items: stretch;
-    justify-content: center;
+
+    .allOrdersWrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+      grid-gap: 20px;
+  
+      align-items: stretch;
+      justify-content: center;
+    }
+    .pagination {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+
+      .paginationButton {
+        padding:5px 10px;
+        background-color: white;
+
+        
+      }
+      .paginationButton.active {
+        background: grey;
+      } 
+      
+    }
+
+
 
     .orderItemWrap {
       background-color: #f8f9fa;
