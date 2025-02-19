@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import OrderItem from './OrderItem';
 import { OrderItemInt } from '../types/typeIndex';
 
@@ -17,6 +17,10 @@ const AllOrders: React.FC<AllOrdersProps> = ({ openCart, orders }) => {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedOrders = orders.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
+
+  useEffect(()=>{
+    setCurrentPage(1)
+  }, [orders])
   return (
     <>
     <div className='allOrdersWrap'>
