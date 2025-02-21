@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import OrderItem from './OrderItem';
 import { OrderItemInt } from '../types/typeIndex';
+import { selectCategories } from '../features/orderSlice';
+import { useAppSelector } from '../hooks/hooks';
 
 interface AllOrdersProps {
   orders: OrderItemInt[];
@@ -12,7 +14,7 @@ const ITEMS_PER_PAGE = 6;
 const AllOrders: React.FC<AllOrdersProps> = ({ openCart, orders }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = Math.ceil(orders.length / ITEMS_PER_PAGE);
-
+  const filterItem = useAppSelector(selectCategories);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedOrders = orders.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -20,7 +22,7 @@ const AllOrders: React.FC<AllOrdersProps> = ({ openCart, orders }) => {
 
   useEffect(()=>{
     setCurrentPage(1)
-  }, [orders])
+  }, [filterItem, orders.length])
   return (
     <>
     <div className='allOrdersWrap'>
